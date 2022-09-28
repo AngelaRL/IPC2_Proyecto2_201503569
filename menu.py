@@ -1,10 +1,14 @@
 from ast import Num
 from turtle import st
 import xml.etree.ElementTree as AE
-import os 
+import os
+
+from listaEmpresa import listaEmpresa
+from listaInicial import listaInicial 
 
 salir = False
-ruta = None
+ruta1 = None
+ruta2 = None
 
 def menuprincipal():
     global salir, ruta
@@ -21,6 +25,7 @@ def menuprincipal():
         print("2. Configuracion de empresas ")
         print("3. Seleccion de empresa y punto de atencion ") 
         print("4. Manejo de puntos de atencion ")
+        print("5. Salir ")
         print("")
         print("")
         print("")
@@ -30,38 +35,43 @@ def menuprincipal():
 
         if opcion == 1:
 
-            #ruta = listaPaciente()
+            ruta1 = listaEmpresa()
+            ruta2 = listaInicial()
 
-            print("ingrese la ruta del archivo")
-            #rutaArchivo = input('  ') 
+            print("Ingrese la ruta del primer archivo: ")
+            rutaArchivo = input('  ') 
             print("")
-            print("")
+            print("Ingrese la ruta del segundo archivo: ")
+            rutaArchivo2 = input('  ')
             
           
             
         elif opcion == 2:
             while not salir:
-                print('::::::::::::::: Seccion de Pacientes :::::::::::::::::')
+                print('::::::::::::::: CONFIGURACION DE EMPRESAS :::::::::::::::::')
                
 
                 print("")
             salir = False
         elif opcion == 3:
             print('Generando archivo de salida...')
-            
+
         elif opcion == 4:
+            print('')
+            
+        elif opcion == 5:
             salir = True
             print("Cerrando programa")
         else:
             print("Opcion invalida")
 
-def menuPaciente(pacienteE):
+def menuConfiguracion():
     global salir, ruta
-    contador = 1
+    
     while not salir:
         print("")
         print("")
-        print(":::::::::::  PACIENTE: "+pacienteE.paciente.nombre +" ::::::::::::")
+        print('::::::::::::::: CONFIGURACION DE EMPRESAS :::::::::::::::::')
         print("")
         print("")
         print("1. Analizar Muestra Automaticamente")
