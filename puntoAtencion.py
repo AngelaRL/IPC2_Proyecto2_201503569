@@ -1,3 +1,6 @@
+from escritorio import escritorio
+
+
 class puntoAtencion:
 
     def __init__(self, idpunto, nombre, direccion):
