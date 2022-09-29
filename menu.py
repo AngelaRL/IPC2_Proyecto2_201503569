@@ -53,12 +53,12 @@ def menuprincipal():
           
             
         elif opcion == 2:
-            while not salir:
+            '''while not salir:
                 print('::::::::::::::: CONFIGURACION DE EMPRESAS :::::::::::::::::')
                
 
                 print("")
-            salir = False
+            salir = False'''
         elif opcion == 3:
             print('Generando archivo de salida...')
 
@@ -89,7 +89,7 @@ def menuConfiguracion():
         print("")
         print("")
 
-        subopcion = int(input("ingrese el numero de la opcion que desea: "))
+        '''subopcion = int(input("ingrese el numero de la opcion que desea: "))
 
         if subopcion == 1:
             print("Empezando a analizar Automaticamente:  ")
@@ -101,7 +101,7 @@ def menuConfiguracion():
         elif subopcion == 3: 
             salir=True
         else:
-            print("opcion no valida")
+            print("opcion no valida")'''
 
 if __name__ == "__main__":
     menuprincipal()
