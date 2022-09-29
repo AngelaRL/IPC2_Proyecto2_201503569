@@ -44,6 +44,12 @@ def menuprincipal():
             print("Ingrese la ruta del segundo archivo: ")
             rutaArchivo2 = input('  ')
             
+            if os.path.exists(rutaArchivo):
+                ruta1.cargarEmpresas(rutaArchivo)
+            elif os.path.exists(rutaArchivo2):
+                ruta2.cargarConfiguracion(rutaArchivo2)
+            else:
+                print('Verifique el nombre del archivo  ')
           
             
         elif opcion == 2:
