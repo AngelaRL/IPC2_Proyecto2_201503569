@@ -24,7 +24,7 @@ class listaInicial:
             self.ultimoNodo.siguiente = nuevo #indicamos que el siguiente del ultimo nodo sera el nuevo nodo 
             self.ultimoNodo = nuevo #para decir que el ultimo es el nuevo 
 
-    def cargarEmpresas(self, rutaArchivo):
+    def cargarConfiguracion(self, rutaArchivo):
         print('Empezando a analizar el archivo...')
 
         #para los datos de la configuracion inicial 
@@ -72,6 +72,8 @@ class listaInicial:
                             if ssElemento.tag == 'escritorio':
 
                                 idEscritorio = ssElemento.get('idEscritorio')
+
+                                
 
                     elif subElemento.tag == 'listadoClientes':
 

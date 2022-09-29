@@ -115,6 +115,8 @@ class listaEmpresa:
                                                 nombreEncargado = ssssElemento.text
 
                                                 auxEscritorio = escritorio(int(idEscritorio), int(identifiacionEscritorio), nombreEncargado)
+                                    self.insetar(auxEscritorio)
+                            self.insetar(auxPuntos)
                     
                     elif subElemento.tag == 'listaTransacciones':
 
@@ -132,6 +134,8 @@ class listaEmpresa:
                                         tiempoAtencion = sssElemento.text
 
                                         auxTransaccion = transaccion(int(idTransaccion), nombreTransaccion,tiempoAtencion,0)
+                    self.insetar(auxTransaccion)
+            self.insetar(auxEmpresa)
 
                 
                 

@@ -5,3 +5,4 @@ class empresa:
         self.idempresa = idempresa
         self.nombre = nombre
         self.abreviatura = abreviatura
+        
