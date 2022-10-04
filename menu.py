@@ -21,11 +21,10 @@ def menuprincipal():
         print("")
         print("")
         print("")
-        print("1. Cargar datos ")
-        print("2. Configuracion de empresas ")
-        print("3. Seleccion de empresa y punto de atencion ") 
-        print("4. Manejo de puntos de atencion ")
-        print("5. Salir ")
+        print("1. Configuracion de empresas ")
+        print("2. Seleccion de empresa y punto de atencion ") 
+        print("3. Manejo de puntos de atencion ")
+        print("4. Salir ")
         print("")
         print("")
         print("")
@@ -35,37 +34,15 @@ def menuprincipal():
 
         if opcion == 1:
 
-            ruta1 = listaEmpresa()
-            ruta2 = listaInicial()
-
-            print("Ingrese la ruta del primer archivo: ")
-            rutaArchivo = input('  ') 
-            print("")
-            print("Ingrese la ruta del segundo archivo: ")
-            rutaArchivo2 = input('  ')
-            
-            if os.path.exists(rutaArchivo):
-                ruta1.cargarEmpresas(rutaArchivo)
-            elif os.path.exists(rutaArchivo2):
-                ruta2.cargarConfiguracion(rutaArchivo2)
-            else:
-                print('Verifique el nombre del archivo  ')
-          
+            menuConfiguracion()          
             
         elif opcion == 2:
-            '''while not salir:
-                print('::::::::::::::: CONFIGURACION DE EMPRESAS :::::::::::::::::')
-               
+            print('')
 
-                print("")
-            salir = False'''
         elif opcion == 3:
-            print('Generando archivo de salida...')
-
-        elif opcion == 4:
             print('')
             
-        elif opcion == 5:
+        elif opcion == 4:
             salir = True
             print("Cerrando programa")
         else:
@@ -80,28 +57,58 @@ def menuConfiguracion():
         print('::::::::::::::: CONFIGURACION DE EMPRESAS :::::::::::::::::')
         print("")
         print("")
-        print("1. Analizar Muestra Automaticamente")
-        print("2. Analizar Muestra por Periodo ")
-        print("3. Regresar al menu principal ")
-        print("")
+        print("1. Limpiar sistema ")
+        print("2. Cargar Archivo de configruacion del sistema ")
+        print("3. Crear nueva empresa ")
+        print("4. cargar archivo con configuracion incial")
+        print("5. regresar al menu principal")
         print("")
         print("")
         print("")
         print("")
 
-        '''subopcion = int(input("ingrese el numero de la opcion que desea: "))
+        subopcion = int(input("ingrese el numero de la opcion que desea: "))
 
         if subopcion == 1:
             print("Empezando a analizar Automaticamente:  ")
            
         elif subopcion == 2:
-            print('')
+            ruta1 = listaEmpresa()
+
+            print("Ingrese la ruta del archivo: ")
+            
+            rutaArchivo = input('  ') 
+            print("")
+
+            if os.path.exists(rutaArchivo):
+                ruta1.cargarEmpresas(rutaArchivo)
+            else:
+                print('Verifique el nombre del archivo  ')
         
-                    
-        elif subopcion == 3: 
-            salir=True
+        elif subopcion == 3:
+            print('')
+            print(':::::::::::::::::::::::: NUEVA EMPRESA ::::::::::::::::::::::::')
+            
+            listaEmpresa.crearEmpresa()
+
+        elif subopcion == 4:
+            print('sdfsdf')
+
+            ruta2 = listaInicial()
+
+            print("Ingrese la ruta del archivo: ")
+            rutaArchivo2 = input('  ')
+
+            
+            if os.path.exists(rutaArchivo2):
+                ruta2.cargarConfiguracion(rutaArchivo2)
+            else:
+                print('Verifique el nombre del archivo  ')
+
+        elif subopcion == 5: 
+            menuprincipal()       
         else:
-            print("opcion no valida")'''
+            print("opcion no valida")
 
 if __name__ == "__main__":
     menuprincipal()

@@ -1,4 +1,5 @@
 from logging import root
+from select import select
 from empresa import empresa
 from escritorio import escritorio
 from transaccion import transaccion
@@ -164,7 +165,127 @@ class listaEmpresa:
                     self.insetar(auxTransaccion)
                     
             self.insetar(auxEmpresa)
+
+    def crearEmpresa(self):
+        opcion = True
+
+        auxEmpresa = None
+        auxPuntos = None
+        auxEscritorio = None
+        auxTransaccion = None
+
+        while opcion == True:
+
+            print('Datos de la empresa:')
+
+            print('Ingrese el ID de la empresa: ')
+            idE = input('   ')
+            print('Ingrese el nombre de la empresa: ')
+            nombreE = input('   ')
+            print('Ingrese la abreviatura de la empresa: ')
+            abreviaturaE = input('   ')
+
+            print('Datos puntos de atencion:  ')
+
+            while opcion == True:
+                print('Ingrese el ID del punto de atencion: ')
+                idPunto = input('   ')
+                print('Ingrese el nombre del punto de atencion: ')
+                nombreP = input('   ')
+                print('Ingrese la direccion del punto de atencion: ')
+                direccionP = input('   ')
+
+                auxPuntos = puntoAtencion(idPunto, nombreP,direccionP)
+                self.insetar(auxPuntos)
+
+                print('¿Desea agregar otro punto de atencion?')
+                print('1. si')
+                print('2. No')
+
+                respuesta = int(input("ingrese el numero de la opcion que desea: "))
+
+                if respuesta == 1:
+                    opcion = True
+                elif respuesta == 2:
+                    opcion = False
+                else:
+                    print("opcion no valida")
+
+            print('Datos puntos de los escritorios:  ')
+
+            while opcion == True:
+                print('Ingrese el ID del escritorio: ')
+                idEscritori = input('   ')
+                print('Ingrese el nombre del encargado del escritorio: ')
+                nombreEncargado = input('   ')
+
+                auxEscritorio = escritorio(idEscritori,nombreEncargado)
+                self.insetar(auxEscritorio)
+
+                print('¿Desea agregar otro escritorio?')
+                print('1. si')
+                print('2. No')
+
+                respuesta = int(input("ingrese el numero de la opcion que desea: "))
+
+                if respuesta == 1:
+                    opcion = True
+                elif respuesta == 2:
+                    opcion = False
+                else:
+                    print("opcion no valida")
+            
+            print('Datos de las Transacciones: ')
         
-                
-                
-          
+            while opcion == True:
+                print('Ingrese el ID de la transaccion: ')
+                idT = input('   ')
+                print('Ingrese el nombre de la transaccion: ')
+                nombreT = input('   ')
+                print('Ingrese el tiempo de atencion en minutos: ')
+                tiempoA = input('   ')
+
+                auxTransaccion = transaccion(idT,nombreT,tiempoA,0)
+                self.insetar(auxTransaccion)
+
+                print('¿Desea agregar otra transaccion?')
+                print('1. si')
+                print('2. No')
+
+                respuesta = int(input("ingrese el numero de la opcion que desea: "))
+
+                if respuesta == 1:
+                    opcion = True
+                elif respuesta == 2:
+                    opcion = False
+                else:
+                    print("opcion no valida")
+
+
+            auxEmpresa=empresa(idE, nombreE, abreviaturaE)
+            self.insetar(auxEmpresa)
+
+            print('¿Desea agregar otra empresa?')
+            print('1. si')
+            print('2. No')
+
+            respuesta = int(input("ingrese el numero de la opcion que desea: "))
+
+            if respuesta == 1:
+                opcion = True
+            elif respuesta == 2:
+                opcion = False
+            else:
+                print("opcion no valida")
+        
+
+    def mostrarEmpresas(self):
+        actual = self.primerNodo
+
+        while actual != None: #mientras sea diferente de vacio
+            print('Empresa: ',actual.empresa.nombre)
+            actual = actual.siguiente #con esto indicamos que vamos a avanzar al siguiente nodo (recorre la lista)
+        print('------------------------------------------------------')
+
+
+    
