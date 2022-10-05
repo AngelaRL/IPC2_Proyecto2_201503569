@@ -1,8 +1,0 @@
-from pydoc import classname
-
-
-class nodo:
-
-    def __init__(self, dato):
-        self.dato = dato
-        self.siguiente = None

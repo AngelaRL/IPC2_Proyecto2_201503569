@@ -8,4 +8,5 @@ class escritorio:
         self.idescritorio = idescritorio
         self.identifiacionescritorio = identificacionescritorio
         self.encargado = encargado
+        self.estado = True 
         
