@@ -16,30 +16,53 @@ class listaEmpresa:
         
         self.primerNodo = None
         self.ultimoNodo = None
-        self.tamaño = 0
+        self.tamaño = 0 
 
     def insetar(self, nuevo):
+        if self.repetidos(nuevo.empresa.idempresa):
 
-        self.tamaño +=1
+            self.tamaño +=1
 
-        if self.primerNodo == None: # ciclo para validar si la lista esta vacia 
-            self.primerNodo = nuevo
-            self.ultimoNodo = nuevo
-        else:
-            self.ultimoNodo.siguiente = nuevo #indicamos que el siguiente del ultimo nodo sera el nuevo nodo 
-            self.ultimoNodo = nuevo #para decir que el ultimo es el nuevo 
+            if self.primerNodo == None: # ciclo para validar si la lista esta vacia 
+                self.primerNodo = nuevo
+                self.ultimoNodo = nuevo
+            else:
+                self.ultimoNodo.siguiente = nuevo #indicamos que el siguiente del ultimo nodo sera el nuevo nodo 
+                self.ultimoNodo = nuevo #para decir que el ultimo es el nuevo 
 
     def mostrar(self):
 
         temp = self.primerNodo
+        contador = 1 
+        print('EMPRESAS: ')
+        while contador<= self.tamaño: 
 
-        while temp: 
-
-            print('ID: '+str(temp.empresa.idempresa),' Nombre: '+temp.empresa.nombre,' Abreviatura: '+temp.empresa.abreviatura)
-            temp.listaPuntos.mostrar()
-            temp.listaTrans.mostrar()
-            print('--------------------------------------------------------------')
+            print(str(contador)+') ','ID: '+str(temp.empresa.idempresa),' Nombre: '+temp.empresa.nombre,' Abreviatura: '+temp.empresa.abreviatura)
+ 
             temp = temp.siguiente
+            contador+=1
+
+    def obtenerEmpresa(self,seleccion):
+        temp = self.primerNodo
+        contador = 1 
+        
+        while contador<= self.tamaño: 
+
+            if contador == seleccion:
+                return temp
+
+            temp = temp.siguiente
+            contador+=1
+
+    def repetidos(self, id):
+        temp = self.primerNodo
+         
+        print('EMPRESAS: ')
+        while temp: 
+            if temp.empresa.idempresa == id:
+                return False
+            temp = temp.siguiente
+        return True
             
 
     def cargarEmpresas(self, rutaArchivo):
@@ -183,7 +206,7 @@ class listaEmpresa:
                     
                 self.insetar(auxEmpresa)
                 auxEmpresa = None
-        self.mostrar()
+        
 
     def crearEmpresa(self):
         opcion = True
@@ -308,13 +331,6 @@ class listaEmpresa:
                 print("opcion no valida")
         
 
-    def mostrarEmpresas(self):
-        actual = self.primerNodo
-
-        while actual != None: #mientras sea diferente de vacio
-            print('Empresa: ',actual.empresa.nombre)
-            actual = actual.siguiente #con esto indicamos que vamos a avanzar al siguiente nodo (recorre la lista)
-        print('------------------------------------------------------')
-
+    
 
     

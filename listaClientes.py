@@ -21,7 +21,7 @@ class listaClientes:
         temp = self.primerNodo
         print('Clientes: ')
         while temp: 
-
+            print('Cliente: ')
             print('DPI: '+str(temp.cliente.dpi),' Nombre: '+temp.cliente.nombre)
-            temp.transacciones.mostrar()
+            temp.transacciones.mostrar2()
             temp = temp.siguiente

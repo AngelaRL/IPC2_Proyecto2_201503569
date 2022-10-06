@@ -38,9 +38,28 @@ def menuprincipal():
         elif opcion == 2:
             print('::::::::::::::: SELECCION DE EMPRESA Y PUNTO DE ATENCION :::::::::::::::::')
 
+            ruta1.mostrar()
+            empre = int(input('ingrese el numero de la empresa que desea: '))
+
+            auxEmpresa = ruta1.obtenerEmpresa(empre)
+
+            if auxEmpresa:
+                print('Empresa: '+auxEmpresa.empresa.nombre)
+                auxEmpresa.listaPuntos.mostrar()
+                punto = int(input('ingrese el numero del punto de atencion que desea: '))
+
+                auxPunto = auxEmpresa.listaPuntos.obtenerPunto(punto)
+
+                if auxPunto:
+                    menuPuntos(auxPunto)
+                else:
+                    print('Punto de atencion no valido')
+
+            else:
+                print('Empresa no valida')
+            
 
 
-            menuPuntos()
             
         elif opcion == 3:
             salir = True
@@ -143,21 +162,21 @@ def menuConfiguracion():
         else:
             print("opcion no valida")
 
-def menuPuntos():
-    global salir, ruta
+def menuPuntos(auxpunto):
+    global salir
     
     while not salir:
         print("")
         print("")
-        print('::::::::::::::: MANEJO DE PUNTOS DE ATENCION :::::::::::::::::')
+        print('::::::::::::::: MANEJO DE '+auxpunto.punto.nombre+' :::::::::::::::::')
         print("")
         print("")
-        print("1. Estado de puntos de atencion ")
+        print("1. Estado de "+auxpunto.punto.nombre)
         print("2. Activar escritorio de servicio ")
-        print("3. Desactivar Escritorio de servicio ")
-        print("4. Atender Cliente")
-        print("5. Solicitud de Atencion")
-        print("6. Simular Actividad")
+        print("3. Desactivar escritorio de servicio ")
+        print("4. Atender cliente")
+        print("5. Solicitud de atencion")
+        print("6. Simular actividad")
         print("7. Regresar a menu principal")
         print("")
         print("")
@@ -167,17 +186,55 @@ def menuPuntos():
         subopcion = int(input("ingrese el numero de la opcion que desea: "))
 
         if subopcion == 1:
-            print("Limpiando el sistema...  ")
+            print("Estados:   ")
+            auxpunto.listaEs.mostrarCantidad()
            
         elif subopcion == 2:
-            print(':::::::::::::::::::::::: CONFIGURACION DEL SISTEMA ::::::::::::::::::::::::')
-           
+            salir = False
+            while not salir:
+
+                print(':::::::::::::::::::::::: ACTIVAR ESCRITORIO ::::::::::::::::::::::::')
+                
+                cantidad = auxpunto.listaEs.mostrarDesactivo()
+
+                if cantidad > 0:
+                    op = int(input("ingrese el numero del escritorio que desea activar: "))
+
+                    auxpunto.listaEs.cambiarEstado(op,'activar')
+
+                    op = int(input("Desea activar otro escritorio 1. Si 2. No: "))
+
+                    if op == 2:
+                        salir = True
+                    else:
+                        print('Opcion invalida')
+                else: 
+                    print('No hay escritorios inactivos')
+                    salir = True
+            salir = False
+        
         
         elif subopcion == 3:
-            print('')
-            print(':::::::::::::::::::::::: NUEVA EMPRESA ::::::::::::::::::::::::')
-            
-            listaEmpresa.crearEmpresa()
+            salir = False
+            while not salir:
+                print(':::::::::::::::::::::::: DESACTIVAR ESCRITORIO ::::::::::::::::::::::::')
+                
+                cantidad = auxpunto.listaEs.mostrarActivos()
+                if cantidad > 0:
+                    op = int(input("ingrese el numero del escritorio que desea desactivar: "))
+
+                    auxpunto.listaEs.cambiarEstado(op,'desactivar')
+
+                    op = int(input("Desea activar otro escritorio 1. Si 2. No: "))
+
+                    if op == 2:
+                        salir = True
+                    else:
+                        print('Opcion invalida')
+                else:
+                    print('No hay escritorios activos.')
+                    salir = True
+            salir = False
 
         elif subopcion == 4:
             print(':::::::::::::::::::::::: CONFIGURACION INICIAL ::::::::::::::::::::::::')
