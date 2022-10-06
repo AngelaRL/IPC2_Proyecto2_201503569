@@ -23,12 +23,23 @@ class listaPunto:
     def mostrar(self):
 
         temp = self.primerNodo
+        contador = 1 
+        print('PUNTOS DE ATENCION: ')
+        while contador<= self.tamaño: 
 
-        print('Puntos de atencion: ')
-
-        while temp: 
-
-            print('ID: '+str(temp.punto.idpunto),' Nombre: '+temp.punto.nombre,' Direccion: '+temp.punto.direccion)
-            temp.listaEs.mostrar()
+            print(str(contador)+') ','ID: '+str(temp.punto.idpunto),' Nombre: '+temp.punto.nombre,' Direccion: '+temp.punto.direccion)
             
             temp = temp.siguiente
+            contador += 1
+
+    def obtenerPunto(self,seleccion):
+        temp = self.primerNodo
+        contador = 1 
+        
+        while contador<= self.tamaño: 
+
+            if contador == seleccion:
+                return temp
+                
+            temp = temp.siguiente
+            contador+=1

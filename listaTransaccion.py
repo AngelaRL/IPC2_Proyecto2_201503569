@@ -32,3 +32,14 @@ class listaTransaccion:
 
             print('ID: '+str(temp.transaccion.idtransaccion),' Nombre: '+str(temp.transaccion.nombretransaccion),' Tiempo de Atencion: '+str(temp.transaccion.tiempoatencion),' Cantidad: '+str(temp.transaccion.cantidad))
             temp = temp.siguiente
+
+    def mostrar2(self):
+
+        temp = self.primerNodo
+
+        print('Transacciones: ')
+
+        while temp: 
+
+            print('ID: '+str(temp.transaccion.idtransaccion),' Cantidad: '+str(temp.transaccion.cantidad))
+            temp = temp.siguiente

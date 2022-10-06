@@ -136,8 +136,9 @@ class listaInicial:
                                                 auxTransacciones = None
                                         auxConfi.clientes.insetar(auxClientes)
                                         auxClientes = None
-                                self.insetar(auxConfi)
-                                auxConfi = None
+                        self.insetar(auxConfi)
+                        
+                                
         self.mostrar()
 
 
